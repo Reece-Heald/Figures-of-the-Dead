@@ -16,6 +16,8 @@ var is_game_started: bool = false
 
 var is_game_shop = false
 
+var is_player_dead = false
+
 func increase_score(amount: int) -> void:
 	money+=amount
 	

@@ -13,7 +13,8 @@ var attackDist : int = 60
 var chaseDist : int = 400
 
 
- 
+var hurt = AudioStreamPlayer.new(); 
+
 onready var timer = $Timer
 onready var target = get_node("/root/Main/Player")
 
@@ -29,7 +30,6 @@ func _physics_process (delta):
 
 func attack():
 	if global_position.distance_to(target.global_position) <= attackDist:
-		print("test")
 		target.take_damage(damage)
 		
 func _ready ():
@@ -39,7 +39,10 @@ func _ready ():
 
 	
 func take_damage (dmgToTake):
-		
+	self.add_child(hurt);
+	hurt.stream = load("res://FOTD Assets/Sounds/zombie/hurt.wav");
+	hurt.volume_db = -13
+	hurt.play(true);
 	curHp -= dmgToTake
  
 	if curHp <= 0:
