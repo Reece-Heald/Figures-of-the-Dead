@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://UI.gd" type="Script" id=1]
 [ext_resource path="res://FOTD Assets/PNG/Icons/UI rectangle.png" type="Texture" id=2]
+[ext_resource path="res://Zombie_Font.tres" type="DynamicFont" id=3]
 
 [node name="UI" type="Control"]
 anchor_right = 1.0
@@ -34,3 +35,17 @@ texture_progress = ExtResource( 2 )
 tint_under = Color( 0.254902, 0.254902, 0.239216, 1 )
 tint_progress = Color( 1, 0, 0, 1 )
 nine_patch_stretch = true
+
+[node name="Money_Text" type="Label" parent="Health_Box"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 46.6164
+margin_top = 8.47571
+margin_right = -60.3836
+margin_bottom = -36.5243
+custom_fonts/font = ExtResource( 3 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -11,9 +11,12 @@ var damage : int = 1
 var attackRate : float = .15
 var attackDist : int = 60
 var chaseDist : int = 400
+
+
  
 onready var timer = $Timer
 onready var target = get_node("/root/Main/Player")
+
 
 func _physics_process (delta):
  
@@ -33,6 +36,8 @@ func _ready ():
 	timer.wait_time = attackRate
 	timer.start()
 	
+
+	
 func take_damage (dmgToTake):
 		
 	curHp -= dmgToTake
@@ -41,7 +46,9 @@ func take_damage (dmgToTake):
 		die()
  
 func die ():
+	GameState.increase_score(5)
 	queue_free()
+	
 
 func bullet_hits(area):
 	if area.name == "damage_area":
