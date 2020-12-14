@@ -1,6 +1,6 @@
 extends Node
 
-var money: int = 0
+var money: int = 110
 
 var store = {
 			'bought' : [true, false, false],
@@ -17,6 +17,12 @@ var is_game_started: bool = false
 var is_game_shop = false
 
 var is_player_dead = false
+
+var is_double_points = false
+
+var is_map_selected = false
+
+var current_map
 
 func increase_score(amount: int) -> void:
 	money+=amount
@@ -37,7 +43,11 @@ func start_game():
 func get_money() -> int:
 	return money
 	
+func start_double_points():
+	is_double_points = true
 	
+func end_double_points():
+	is_double_points = false
 func save_store():
 	var file = File.new()
 	file.open(save_store_path, file.WRITE_READ)
@@ -52,3 +62,9 @@ func load_store():
 	store = file.get_var()
 	file.close()
 	return true
+func set_map(map: String):
+	current_map = map
+	print(map)
+func get_map():
+	return current_map
+	

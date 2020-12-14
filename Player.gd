@@ -6,7 +6,13 @@ onready var inventory = get_node("/root/Main/UserInterface/Inventory")
 onready var player_texture = get_node("/root/Main/Player/Player_Sprite")
 onready var zombie_spawner = get_node("/root/Main/Zombie_Spawner")
 
+
 export var Bullet: PackedScene 
+
+
+
+
+
 
 var _speed := 155
 var bullet_speed = 1000
@@ -101,6 +107,7 @@ func take_damage (dmgToTake):
 func die ():
 	#get_tree().reload_current_scene()
 	GameState.is_game_over = true
+
 	
 func _ready ():
 	GameState.is_player_dead = false
@@ -110,6 +117,7 @@ func _ready ():
 	background.volume_db = -10
 	background.play(true);
 	
+	
 func set_fire_rate (amount):
 	fire_rate = amount
 	
@@ -118,3 +126,15 @@ func set_bullet_speed (amount):
 	
 func set_gun_damage (amount):
 	gun_damage = amount
+
+func heal(amount):
+	curHp = curHp + amount
+	ui.update_health_bar(curHp, max_health)
+
+func increase_speed(amount):
+	_speed = _speed + amount
+
+func get_speed():
+	return _speed
+func test():
+	return print(_speed)

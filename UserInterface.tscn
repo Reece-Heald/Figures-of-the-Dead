@@ -1,0 +1,199 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://FOTD Assets/Deanna.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://UI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Inventory.tscn" type="PackedScene" id=3]
+[ext_resource path="res://DeathScreen.gd" type="Script" id=4]
+[ext_resource path="res://PauseMenu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Shop.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Dialogue.gd" type="Script" id=7]
+
+[sub_resource type="DynamicFont" id=5]
+size = 85
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 45
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 25
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 21
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "ShowDialouge"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect/Dialouge:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect/Close:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="UserInterface" type="CanvasLayer"]
+pause_mode = 2
+
+[node name="UI" parent="." instance=ExtResource( 2 )]
+margin_left = 2.5015
+margin_top = 5.99826
+margin_right = 2.50146
+margin_bottom = 7.99829
+
+[node name="Inventory" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[node name="PauseMenu" parent="." instance=ExtResource( 5 )]
+
+[node name="DeathScreen" type="ColorRect" parent="."]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.647059, 0.317647, 0, 1 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeathLabel" type="Label" parent="DeathScreen"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -160.282
+margin_top = 78.399
+margin_right = 156.718
+margin_bottom = 372.399
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "!You Died!
+
+Try Again??"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="DeathScreen"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -98.7181
+margin_top = -151.744
+margin_right = 102.282
+margin_bottom = -83.7444
+custom_fonts/font = SubResource( 6 )
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shop" parent="." instance=ExtResource( 6 )]
+pause_mode = 2
+visible = false
+margin_right = -5.52924
+
+[node name="Dialogue" type="Popup" parent="."]
+pause_mode = 2
+margin_left = 356.0
+margin_top = 484.0
+margin_right = 685.0
+margin_bottom = 591.0
+popup_exclusive = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Dialogue"]
+margin_right = 327.0
+margin_bottom = 102.0
+color = Color( 0.647059, 0.317647, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OhNo" type="Label" parent="Dialogue/ColorRect"]
+margin_right = 327.0
+margin_bottom = 29.0
+custom_fonts/font = SubResource( 1 )
+text = "Speaker    A voice from the Void!"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dialouge" type="Label" parent="Dialogue/ColorRect"]
+margin_left = 4.0
+margin_top = 28.0
+margin_right = 331.0
+margin_bottom = 82.0
+custom_fonts/font = SubResource( 2 )
+text = "You gotta kill them all, and try to live"
+align = 1
+valign = 1
+percent_visible = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Close" type="Label" parent="Dialogue/ColorRect"]
+visible = false
+margin_left = 108.349
+margin_top = 84.63
+margin_right = 218.349
+margin_bottom = 103.63
+custom_fonts/font = SubResource( 3 )
+text = "Press C to Close"
+align = 1
+
+[node name="ColorPicker" type="ColorRect" parent="Dialogue/ColorRect"]
+margin_top = 26.0
+margin_right = 327.0
+margin_bottom = 28.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorPicker2" type="ColorRect" parent="Dialogue/ColorRect"]
+margin_left = 0.280609
+margin_top = 84.368
+margin_right = 327.281
+margin_bottom = 86.368
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Dialogue"]
+anims/ShowDialouge = SubResource( 4 )
+[connection signal="pressed" from="DeathScreen/Button" to="DeathScreen" method="_on_Button_pressed"]
+[connection signal="animation_finished" from="Dialogue/AnimationPlayer" to="Dialogue" method="_on_AnimationPlayer_animation_finished"]

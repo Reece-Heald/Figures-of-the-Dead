@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/MP5K.png-9c99bace2132683a3cf82de0d59e0bdb.stex"
+path="res://.import/map3.PNG-2bd434ada935df07c8eb27e52bbab706.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://FOTD Assets/PNG/Inventory/Tile Items/MP5K.png"
-dest_files=[ "res://.import/MP5K.png-9c99bace2132683a3cf82de0d59e0bdb.stex" ]
+source_file="res://FOTD Assets/PNG/Menus/map3.PNG"
+dest_files=[ "res://.import/map3.PNG-2bd434ada935df07c8eb27e52bbab706.stex" ]
 
 [params]
 

@@ -11,7 +11,7 @@ var damage : int = 1
 var attackRate : float = .15
 var attackDist : int = 60
 var chaseDist : int = 400
-
+var dialoage = load("res://Dialogue.gd").new()
 
 var hurt = AudioStreamPlayer.new(); 
 
@@ -33,6 +33,7 @@ func attack():
 		target.take_damage(damage)
 		
 func _ready ():
+	#dialoage.open()
 	timer.wait_time = attackRate
 	timer.start()
 	
@@ -49,8 +50,13 @@ func take_damage (dmgToTake):
 		die()
  
 func die ():
-	GameState.increase_score(5)
-	queue_free()
+	if GameState.is_double_points == true:
+		GameState.increase_score(10)
+		queue_free()
+	if GameState.is_double_points == false:
+		print("oh yeah")
+		GameState.increase_score(5)
+		queue_free()
 	
 
 func bullet_hits(area):

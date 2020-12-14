@@ -1,5 +1,6 @@
 extends Node2D
 
+#Arkeve on youtube helped me figure out how to go bout the inventory system 
 
 const SlotClass = preload("res://Slot.gd")
 onready var inventory_slots = get_tree().get_root().get_node("/root/Main/UserInterface/Inventory/Background/GridContainer")
